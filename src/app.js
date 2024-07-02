@@ -11,6 +11,8 @@ const api = require("./api");
 
 const app = express();
 
+app.set("trust proxy", true);
+
 app.use(morgan("dev"));
 // app.use(helmet());
 // app.use(cors());
@@ -21,7 +23,8 @@ app.get("/api/hello", async (req, res) => {
     let queryData = req.query;
     // console.log(queryData);
 
-    let clientIP = req.socket.remoteAddress || req.headers["x-forwarded-for"];
+    let clientIP = req.ip;
+    // req.socket.remoteAddress || req.headers["x-forwarded-for"];
 
     let ipResponse = await axios.get("https://ipapi.co/json/");
 

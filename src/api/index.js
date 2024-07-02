@@ -11,7 +11,8 @@ router.get("/api/hello", async (req, res) => {
     let queryData = req.query;
     // console.log(queryData);
 
-    let clientIP = req.socket.remoteAddress || req.headers["x-forwarded-for"];
+    let clientIP = req.ip;
+    // req.headers["x-forwarded-for"] || req.socket.remoteAddress;
 
     let ipResponse = await axios.get("https://ipapi.co/json/");
 
