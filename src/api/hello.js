@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?q=${location.data.city}&appid=fec2e968bd33b3fd04023b0be3ecd320&units=metric`
     );
 
-    console.log(weather);
+    // console.log(weather);
 
     res.status(200).json({
       client_ip: clientIP,
